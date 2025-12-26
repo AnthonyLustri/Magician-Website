@@ -28,27 +28,14 @@
         body {
             padding-top: 72px;
             font-family: 'Roboto', sans-serif;
-            background: transparent;
+            background: url('https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/background.jpeg') center / cover no-repeat fixed;
             color: #e0f7ff;
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
         }
-        #video-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 30, 0.5);
-            z-index: -1;
-        }
+        
+        
         h1, h2, h3 {
             font-family: 'Yusei Magic', sans-serif;
             color: #ffffff;
@@ -229,10 +216,9 @@
         .sparkle-text {
             color: #ffffff;
             text-shadow:
-                0 0 6px rgba(255,255,255,0.6),
-                0 0 14px rgba(255,255,255,0.45),
-                0 0 28px rgba(255,255,255,0.25);
-            animation: outerGlow 4s ease-in-out infinite;
+                0 2px 6px rgba(0,0,0,0.8),
+                0 0 10px rgba(0,0,0,0.9),
+                0 0 22px rgba(0,0,0,0.8);
         }
 
         @keyframes outerGlow {
@@ -458,24 +444,11 @@
             font-weight: 500;
         }
             
-        /* =====================================================
-           GALLERY SLIDESHOW
-           -----------------------------------------------------
-           Controls the fixed height of gallery images
-           inside the slideshow. Adjust height values to
-           make the gallery taller or shorter.
-           ===================================================== */
-           ===================== */
-        .gallery-carousel img {
-            height: 420px;
-            object-fit: cover;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .gallery-carousel img {
-                height: 260px;
-            }
+                }
+    .hero-subtext {
+            text-shadow:
+                0 2px 6px rgba(0,0,0,0.85),
+                0 0 14px rgba(0,0,0,0.9);
         }
     </style>
 </head>
@@ -483,10 +456,8 @@
 
 <div class="particles-container"></div>
 
-<video id="video-bg" autoplay muted loop playsinline>
-    <source src="https://cdn.pixabay.com/video/2024/07/31/224143_large.mp4" type="video/mp4">
-</video>
-<div class="overlay"></div>
+
+
 
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
@@ -498,8 +469,8 @@
                 <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#tricks">Tricks</a></li>
-                <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="#gallery-reviews">Reviews</a></li>
+                <li class="nav-item"><a class="nav-link" href="#letters">Letters</a></li>
                 <li class="nav-item"><a class="nav-link btn btn-outline-info ms-lg-3 px-4" href="#contact">Book Now</a></li>
             </ul>
         </div>
@@ -525,7 +496,7 @@
                 </textPath>
             </text>
         </svg>
-        <h1 class="display-1 text-center" style="font-size: clamp(2.1rem, 4.8vw, 3.4rem); margin-top: 0.5rem;">Prepare to Be Amazed...</h1>
+        <h1 class="display-1 text-center hero-subtext" style="font-size: clamp(2.1rem, 4.8vw, 3.4rem); margin-top: 0.5rem;">Prepare to Be Amazed...</h1>
         
         
     </div>
@@ -543,20 +514,25 @@
 <section id="about" class="py-5">
     <div class="container text-center section-panel">
         <h2 class="section-heading animated mb-5 animate__animated animate__fadeIn magictime twisterInUp">About the Magician</h2>
-        <div class="row align-items-center">
-            <div class="col-md-6 animate__animated animate__slideInLeft magictime puffIn">
-                <img src="https://images.stockcake.com/public/e/0/9/e09d0ffa-b0b7-4350-86e3-f52d6756c4f1_large/victorian-magic-show-stockcake.jpg" class="img-fluid rounded shadow" alt="Magician">
-            </div>
-            <div class="col-md-6 animate__animated animate__slideInRight magictime puffIn">
-                <p class="lead">John Michaels takes some classes of magic combined with comedy, music, and showmanship to present an exciting and colorful show that is enjoyed by all ages.</p>
-                <p>Michael’s Show is great entertainment for:</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <p class="lead">
+                    John Michaels takes some classes of magic combined with comedy, music, and showmanship to present an exciting and colorful show that is enjoyed by all ages.
+                </p>
+                <p>
+                    Michael’s Show is great entertainment for:
+                </p>
                 <ul class="list-unstyled">
                     <li>• Corporate Events</li>
                     <li>• Fundraisers</li>
                     <li>• Private Shows</li>
                 </ul>
-                <p>Admired by his peers in magic, John Michaels has been asked to perform his act at such magic conventions as the Texas Association of Magicians, Columbus, Ohio’s famed Magi-Fest, New York and Canada’s Associations of Magicians, and Appleton, Wisconsin’s Houdini Convention.</p>
-                <p>So if you are in need of entertainment for a large venue or just a small audience, <strong>The John Michaels Show</strong> can custom tailor a performance for your next event.</p>
+                <p>
+                    Admired by his peers in magic, John Michaels has been asked to perform his act at such magic conventions as the Texas Association of Magicians, Columbus, Ohio’s famed Magi-Fest, New York and Canada’s Associations of Magicians, and Appleton, Wisconsin’s Houdini Convention.
+                </p>
+                <p>
+                    So if you are in need of entertainment for a large venue or just a small audience, <strong>The John Michaels Show</strong> can custom tailor a performance for your next event.
+                </p>
             </div>
         </div>
     </div>
@@ -575,7 +551,6 @@
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="card h-100 animate__animated animate__flipInX magictime foolishIn">
-                    <img src="https://previews.123rf.com/images/dolgachov/dolgachov1312/dolgachov131201445/24546774-magic-performance-circus-show-concept-magician-in-top-hat-showing-trick.jpg" class="card-img-top" alt="Card Trick">
                     <div class="card-body">
                         <h5 class="card-title">Mind-Reading Cards</h5>
                         <p class="card-text">I can guess your chosen card with 100% accuracy – every time!</p>
@@ -584,7 +559,6 @@
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card h-100 animate__animated animate__flipInX magictime foolishIn">
-                    <img src="https://thumbs.dreamstime.com/b/levitation-act-magician-performing-stage-48599246.jpg" class="card-img-top" alt="Levitation">
                     <div class="card-body">
                         <h5 class="card-title">Levitation Illusion</h5>
                         <p class="card-text">Defy gravity as objects float mysteriously in mid-air.</p>
@@ -593,7 +567,6 @@
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card h-100 animate__animated animate__flipInX magictime foolishIn">
-                    <img src="https://images.stockcake.com/public/3/6/9/36905b2b-fbed-41d3-aee2-4c7b23d171c6_large/magic-show-performance-stockcake.jpg" class="card-img-top" alt="Vanishing Act">
                     <div class="card-body">
                         <h5 class="card-title">Vanishing Act</h5>
                         <p class="card-text">Watch as I make the impossible happen right before your eyes.</p>
@@ -610,56 +583,7 @@
      Automatic fading slideshow of magic show images.
      Images auto-rotate and can be clicked to enlarge.
      ===================================================== -->
-<section id="gallery" class="py-5">
-    <div class="container text-center section-panel">
-        <h2 class="section-heading animated mb-5 animate__animated animate__pulse magictime tinRightIn">Gallery</h2>
 
-        <div id="magicGalleryCarousel" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="7000">
-            <div class="carousel-inner rounded shadow gallery-carousel">
-                <div class="carousel-item active">
-                    <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Magician performing on stage">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Magic show lighting">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Magician illusion">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Stage performance">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Audience amazed">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Live entertainment">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Showman on stage">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Theatrical lighting">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Stage magician performance">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Live show audience">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Dramatic stage lighting show">
-                </div>
-            </div>
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#magicGalleryCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#magicGalleryCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
-    </div>
-</section>
 
 <!-- =====================================================
      AUDIENCE REVIEWS
@@ -722,6 +646,31 @@
     </div>
 </section>
 
+<section id="letters" class="py-5">
+    <div class="container text-center section-panel">
+        <h2 class="section-heading animated mb-5">Letters</h2>
+        <div class="card bg-transparent text-white border-info mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title">★★★★★ — School Show Assemblies</h5>
+                        <p class="card-text">
+                            From 1999 to 2008, John Michaels worked with the <strong>National Child Safety Council</strong> and the <strong>National Fire Safety Council</strong>, performing over <strong>2,000 school show assemblies</strong> nationwide.
+                        </p>
+                        <p class="card-text mb-0">
+                            Prior to that, John Michaels performed his own school assembly programs. Below are just a few letters that have been written by schools reflecting on his performances.
+                        </p>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     CONTACT / BOOKING FORM
+     -----------------------------------------------------
+     Client contact form for booking inquiries.
+     Can be connected to email or backend service
+     later if needed.
+     ===================================================== -->
 <!-- =====================================================
      CONTACT / BOOKING FORM
      -----------------------------------------------------
@@ -730,7 +679,7 @@
      later if needed.
      ===================================================== -->
 <section id="contact" class="py-5">
-    <div class="container text-center">
+    <div class="container text-center section-panel">
         <h2 class="section-heading animated mb-5 animate__animated animate__jackInTheBox magictime bombLeftOut">Book a Show</h2>
         <form class="bg-dark bg-opacity-50 p-4 rounded">
             <input type="text" class="form-control mb-3" placeholder="Your Name" required>
@@ -744,16 +693,6 @@
 <footer class="py-4 text-center">
     <p>&copy; 2025 Jmichaelsmagic</p>
 </footer>
-
-<!-- IMAGE MODAL -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content bg-transparent border-0">
-      <button type="button" class="btn-close btn-close-white ms-auto mb-2" data-bs-dismiss="modal"></button>
-      <img id="modalImage" src="" class="img-fluid rounded shadow-lg" alt="Expanded gallery image">
-    </div>
-  </div>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -770,18 +709,7 @@
         reviews[currentReviewIndex].classList.add('active');
     }, 5000);
 
-    /* =====================
-       GALLERY IMAGE MODAL
-       ===================== */
-    const galleryModal = new bootstrap.Modal(document.getElementById('imageModal'));
-    const modalImage = document.getElementById('modalImage');
-
-    document.querySelectorAll('#magicGalleryCarousel img').forEach(img => {
-        img.addEventListener('click', () => {
-            modalImage.src = img.src;
-            galleryModal.show();
-        });
-    });
+    
 </script>
 </body>
 </html>
