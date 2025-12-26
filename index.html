@@ -96,11 +96,14 @@
       flex-wrap: nowrap;
       align-items: center;
       justify-content: flex-end; /* keep items aligned right */
-      padding-right: 1.25rem; /* nudge nav slightly more to the right */ /* keep items aligned right */
+      padding-right: 1.25rem; /* nudge nav slightly more to the right */
+      padding-left: 1rem; /* prevent first item from being clipped on mobile */
       gap: 0.9rem;
       margin: 0;
-      padding: 0.35rem 0;
+      padding-top: 0.35rem;
+      padding-bottom: 0.35rem;
       overflow-x: auto;
+      overflow-y: hidden;
       overflow-y: hidden;
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;
@@ -318,7 +321,7 @@
        HERO DOVES (STATIC LEFT / RIGHT)
        =============== */
     .hero-doves {
-      position: absolute;
+      position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 1;
@@ -404,7 +407,6 @@
     .review-author {
       color: #f0f0f0;
       font-weight: 500;
-    }
     }
 
     /* Audience fade rotator (original fade style, centered) */
@@ -492,15 +494,28 @@
     @media (max-width: 575.98px) {
       body { padding-top: 112px; }
 
-      /* HERO TITLE HIERARCHY */
+      /* HERO TITLE HIERARCHY — FIXED */
       svg text {
-        font-size: 62px; /* JOHN MICHAEL'S SHOW larger */
+        font-size: 72px; /* THE JOHN MICHAEL’S SHOW clearly dominant */
       }
 
-      .prepare-font {
-        font-size: 1.6rem !important; /* Prepare to Be Amazed smaller */
-        letter-spacing: 1.5px;
+      h1.display-1.prepare-font {
+        font-size: 1.35rem !important; /* Prepare to Be Amazed smaller */
+        letter-spacing: 1.2px;
       }
+
+      /* Doves match desktop positioning */
+      .hero-dove {
+        width: 44px;
+        top: 50%;
+      }
+
+      .hero-dove.left { left: 4%; }
+      .hero-dove.right { right: 4%; }
+
+      .flying-dove { width: 18px; }
+
+      .contact-link { font-size: 1.05rem; }
 
       /* Doves match desktop positioning */
       .hero-dove {
@@ -577,7 +592,7 @@
         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
         <li class="nav-item"><a class="nav-link" href="#gallery-reviews">Reviews</a></li>
         <li class="nav-item"><a class="nav-link" href="#letters">Letters</a></li>
-        <li class="nav-item nav-cta"><a class="nav-link btn btn-outline-light px-4" href="#contact">Book Now</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Book Now</a></li>
       </ul>
     </div>
   </nav>
@@ -809,7 +824,31 @@
       observer.observe(hero);
     })();
 
-    // Smooth scrolling for navbar anchor links (defensive)
+    // Align the left/right hero doves to the curved title (mobile + desktop)
+    (function alignHeroDoves() {
+      const heroDoves = document.querySelector('.hero-doves');
+      const left = document.querySelector('.hero-dove.left');
+      const right = document.querySelector('.hero-dove.right');
+      const svg = document.querySelector('#home svg');
+      if (!heroDoves || !left || !right || !svg) return;
+
+      const update = () => {
+        const r = svg.getBoundingClientRect();
+        const centerY = r.top + r.height / 2;
+        left.style.top = centerY + 'px';
+        right.style.top = centerY + 'px';
+      };
+
+      // Run now and after layout settles
+      update();
+      requestAnimationFrame(update);
+      setTimeout(update, 200);
+
+      window.addEventListener('resize', update, { passive: true });
+      window.addEventListener('orientationchange', () => setTimeout(update, 150), { passive: true });
+    })();
+
+    // Smooth scrolling for navbar anchor links (defensive) for navbar anchor links (defensive)
     (function smoothScrollNav() {
       document.querySelectorAll('a.nav-link[href^="#"]').forEach((a) => {
         a.addEventListener('click', (e) => {
