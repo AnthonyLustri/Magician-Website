@@ -89,9 +89,31 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     }
 
+    /* Always-visible nav row (no dropdown); stays in one line and scrolls on small screens */
+    .nav-strip {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: flex-end; /* keep items aligned right */
+      gap: 0.9rem;
+      margin: 0;
+      padding: 0.35rem 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Hide scrollbar but keep scroll */
+    .nav-strip::-webkit-scrollbar { height: 0; }
+    .nav-strip { scrollbar-width: none; }
+
+    .nav-cta { margin-left: 0.5rem; }
+
     .nav-link {
       position: relative;
-      margin-left: 1rem;
+      margin-left: 0;
       font-weight: 500;
       color: var(--text) !important;
       transition: color 0.25s ease;
@@ -118,15 +140,7 @@
       left: 0;
     }
 
-    .navbar-toggler {
-      padding: 0.55rem 0.65rem;
-      border: 1px solid rgba(154, 217, 255, 0.35);
-      border-radius: 12px;
-    }
-
-    .navbar-toggler:focus {
-      box-shadow: 0 0 0 0.2rem rgba(0, 191, 255, 0.25);
-    }
+    /* Book Now uses the same underline hover style as other nav links */
 
     /* ===============
        HERO
@@ -210,6 +224,7 @@
       color: #fff;
       text-decoration: none;
       letter-spacing: 0.5px;
+      word-break: break-word;
       text-shadow: 0 2px 6px rgba(0,0,0,0.75);
       transition: opacity 0.25s ease, transform 0.25s ease;
     }
@@ -299,73 +314,61 @@
     }
 
     /* ===============
-       FLYING WHITE BIRDS
+       HERO DOVES (STATIC LEFT / RIGHT)
        =============== */
-    .birds-container {
+    .hero-doves {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-dove {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 80px;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+    }
+
+    .hero-dove.left {
+      left: 5%;
+    }
+
+    .hero-dove.right {
+      right: 5%;
+      transform: translateY(-50%) scaleX(-1); /* flip horizontally */
+    }
+
+    /* ===============
+       FLYING DOVES (RIGHT → LEFT)
+       =============== */
+    .flying-doves {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 2; /* above video, below text */
+      z-index: 1;
     }
 
-    /* Only show birds when hero section is in view */
-    .birds-container.hidden {
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-    .bird {
+    .flying-dove {
       position: absolute;
-      font-size: 2.2rem;
-      color: rgba(255,255,255,0.9);
+      width: 28px;
+      opacity: 0;
       filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
-      user-select: none;
-      white-space: nowrap;
-
-      /* two animations: left->right glide + gentle "bouncy" flap */
-      animation:
-        flyAcross linear infinite,
-        birdBounce ease-in-out infinite;
+      animation: flyAcross linear infinite;
     }
 
     @keyframes flyAcross {
       from {
-        transform: translateX(120vw) translateY(0) scale(0.9);
+        transform: translateX(120vw);
         opacity: 0;
       }
-      20% {
-        opacity: 1;
-      }
-      to {
-        transform: translateX(-20vw) translateY(-20px) scale(1);
-        opacity: 0;
-      }
-    }
       15% { opacity: 1; }
       to {
-        transform: translateX(-18vw) translateY(-20px) scale(1);
+        transform: translateX(-20vw);
         opacity: 0;
       }
-    }
-
-    /* Slow, subtle flight motion (no frantic bouncing) */
-    @keyframes birdBounce {
-      0%   { margin-top: 0px;  rotate: -1deg; }
-      50%  { margin-top: -4px; rotate:  1deg; }
-      100% { margin-top: 0px;  rotate: -1deg; }
-    }
-      25%  { margin-top: -8px;  rotate:  3deg; }
-      50%  { margin-top: -2px;  rotate: -2deg; }
-      75%  { margin-top: -10px; rotate:  4deg; }
-      100% { margin-top: 0px;   rotate: -4deg; }
-    }
-      10% { opacity: 1; }
-      to {
-        transform: translateX(115vw) translateY(-40px) scale(1);
-        opacity: 0;
-      }
-    }
-      to { opacity: 1; }
     }
 
     /* ===============
@@ -436,27 +439,63 @@
        MOBILE
        =============== */
     @media (max-width: 991.98px) {
-      .navbar-nav {
-        padding: 0.75rem 0 1rem;
+      body { padding-top: 104px; }
+
+      .navbar .container {
+        padding-top: 0.35rem;
+        padding-bottom: 0.35rem;
+      }
+
+      /* Keep as a single horizontal row, aligned right */
+      .nav-strip {
+        justify-content: flex-end;
+        gap: 0.75rem;
+        padding: 0.25rem 0;
       }
 
       .nav-link {
-        margin-left: 0;
-        padding: 0.8rem 0.25rem;
+        padding: 0.55rem 0.2rem;
+        font-size: 0.98rem;
+        line-height: 1;
       }
+
+      .nav-link::after { bottom: -4px; }
 
       .navbar-nav .btn {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        margin-top: 0.5rem;
+        width: auto;
+        margin-top: 0;
+        padding: 0.5rem 0.9rem;
+        border-radius: 999px;
       }
 
-      .nav-link::after { bottom: -2px; }
+      /* Hero & doves sizing */
+      .hero { height: 92vh; }
+
+      .hero-dove {
+        width: 54px;
+        opacity: 0.85;
+      }
+
+      .hero-dove.left { left: 2.5%; }
+      .hero-dove.right { right: 2.5%; }
+
+      .flying-dove { width: 22px; }
+
+      /* Ensure curved title scales down nicely */
+      svg text { font-size: 54px; }
     }
 
+    
+
     @media (max-width: 575.98px) {
+      body { padding-top: 112px; }
+
+      .hero-dove { width: 44px; }
+      .flying-dove { width: 18px; }
+
+      .contact-link { font-size: 1.05rem; }
+
+
       .hero { height: 92vh; }
 
       h1.display-1 {
@@ -501,25 +540,25 @@
   </video>
   <div class="overlay"></div><!-- Subtle stars layer -->
   <div class="particles-container" aria-hidden="true"></div>
-  <!-- Flying white birds -->
-  <div class="birds-container hero-only" aria-hidden="true"></div>
+  <!-- Hero doves (static, left & right) -->
+  <div class="hero-doves" aria-hidden="true">
+    <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/Dove.png" class="hero-dove left" alt="" />
+    <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/Dove.png" class="hero-dove right" alt="" />
+  </div>
+
+  <!-- Flying doves -->
+  <div class="flying-doves" aria-hidden="true"></div>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-dark fixed-top">
     <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#tricks">Tricks</a></li>
-          <li class="nav-item"><a class="nav-link" href="#gallery-reviews">Reviews</a></li>
-          <li class="nav-item"><a class="nav-link" href="#letters">Letters</a></li>
-          <li class="nav-item"><a class="nav-link btn btn-outline-info ms-lg-3 px-4" href="#contact">Book Now</a></li>
-        </ul>
-      </div>
+      <ul class="navbar-nav nav-strip w-100" id="navbarNav">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery-reviews">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#letters">Letters</a></li>
+        <li class="nav-item nav-cta"><a class="nav-link btn btn-outline-light px-4" href="#contact">Book Now</a></li>
+      </ul>
     </div>
   </nav>
 
@@ -732,35 +771,35 @@
       }, 3500);
     })();
 
-    // Flying white birds near the title (HOME / HERO ONLY)
-    (function createBirds() {
-      const container = document.querySelector('.birds-container');
+    // Flying doves (right → left)
+    (function createFlyingDoves() {
+      const container = document.querySelector('.flying-doves');
       const hero = document.getElementById('home');
       if (!container || !hero) return;
 
-      const BIRD_COUNT = 5;
-      const birdChar = '🕊️';
+      const COUNT = 5;
+      const imgSrc = 'https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/Dove.png';
 
-      for (let i = 0; i < BIRD_COUNT; i++) {
-        const bird = document.createElement('div');
-        bird.className = 'bird';
-        bird.textContent = birdChar;
+      for (let i = 0; i < COUNT; i++) {
+        const dove = document.createElement('img');
+        dove.src = imgSrc;
+        dove.className = 'flying-dove';
+        dove.alt = '';
 
-        const top = 18 + Math.random() * 30; // keep near hero title
-        const duration = 18 + Math.random() * 6;
-        const delay = 2 + Math.random() * 6;
+        const top = 20 + Math.random() * 40;
+        const duration = 14 + Math.random() * 6;
+        const delay = Math.random() * 8;
 
-        bird.style.top = top + 'vh';
-        bird.style.animationDuration = duration + 's, ' + (3 + Math.random()).toFixed(2) + 's';
-        bird.style.animationDelay = delay + 's, ' + (Math.random() * 1.5).toFixed(2) + 's';
+        dove.style.top = top + 'vh';
+        dove.style.animationDuration = duration + 's';
+        dove.style.animationDelay = delay + 's';
 
-        container.appendChild(bird);
+        container.appendChild(dove);
       }
 
-      // Hide birds when hero is out of view
       const observer = new IntersectionObserver(
         ([entry]) => {
-          container.classList.toggle('hidden', !entry.isIntersecting);
+          container.style.display = entry.isIntersecting ? 'block' : 'none';
         },
         { threshold: 0.25 }
       );
