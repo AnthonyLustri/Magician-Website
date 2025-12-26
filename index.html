@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -495,8 +496,9 @@
       body { padding-top: 112px; }
 
       /* HERO TITLE HIERARCHY — FIXED */
+      #home svg { overflow: visible; }
       svg text {
-        font-size: 72px; /* THE JOHN MICHAEL’S SHOW clearly dominant */
+        font-size: 68px; /* THE JOHN MICHAEL’S SHOW clearly dominant */
       }
 
       h1.display-1.prepare-font {
@@ -601,9 +603,9 @@
   <section id="home" class="hero">
     
     <div class="container text-center" style="position: relative; z-index: 2;">
-      <svg viewBox="0 0 1100 260" preserveAspectRatio="xMidYMid meet" style="max-width: 100%; height: auto;" class="mb-3" aria-hidden="true">
-        <path id="curve" d="M 80 190 Q 550 20 1020 190" fill="transparent" />
-        <text text-anchor="middle" fill="#ffffff" font-size="68" font-family="'Yusei Magic', sans-serif" letter-spacing="4" class="sparkle-text">
+      <svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid meet" style="max-width: 100%; height: auto; overflow: visible;" class="mb-2" aria-hidden="true">
+        <path id="curve" d="M 60 190 Q 600 20 1140 190" fill="transparent" />
+        <text text-anchor="middle" fill="#ffffff" font-size="62" font-family="'Yusei Magic', sans-serif" letter-spacing="3" class="sparkle-text">
           <animate attributeName="opacity" from="0" to="1" dur="1.6s" fill="freeze" />
           <textPath href="#curve" startOffset="50%">THE JOHN MICHAEL’S SHOW</textPath>
         </text>
@@ -834,7 +836,7 @@
 
       const update = () => {
         const r = svg.getBoundingClientRect();
-        const centerY = r.top + r.height / 2;
+        const centerY = r.top + r.height / 2 + 18;
         left.style.top = centerY + 'px';
         right.style.top = centerY + 'px';
       };
