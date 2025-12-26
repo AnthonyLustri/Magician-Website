@@ -96,6 +96,7 @@
       flex-wrap: nowrap;
       align-items: center;
       justify-content: flex-end; /* keep items aligned right */
+      padding-right: 1.25rem; /* nudge nav slightly more to the right */ /* keep items aligned right */
       gap: 0.9rem;
       margin: 0;
       padding: 0.35rem 0;
@@ -372,58 +373,58 @@
     }
 
     /* ===============
-       REVIEWS
+       REVIEWS (CENTERED GRID)
        =============== */
-    .review-rotator {
-      position: relative;
-      max-width: 700px;
-      margin: 0 auto;
+    .reviews-scroller {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      justify-content: center;
+      text-align: left;
+      padding: 0.5rem 0;
     }
 
-    .review {
-      display: none;
-      opacity: 0;
-      transition: opacity 1.2s ease;
-    }
-
-    .review.active {
-      display: block;
-      opacity: 1;
-    }
-
-    .stars {
-      color: #ffd700;
-      font-size: 1.8rem;
-      letter-spacing: 4px;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    .review-card {
+      flex: 1 1 320px;
+      max-width: 360px;
+      background: rgba(20, 20, 20, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 18px;
+      padding: 1.25rem 1.25rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
     }
 
     .review-text {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-style: italic;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
     }
 
     .review-author {
       color: #f0f0f0;
       font-weight: 500;
     }
+    }
 
-    /* Audience fade rotator */
+    /* Audience fade rotator (original fade style, centered) */
     .audience-rotator {
       position: relative;
       height: 2.2rem;
       overflow: hidden;
+      text-align: center;
     }
 
     .audience-item {
       position: absolute;
       width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
       opacity: 0;
       transition: opacity 1.2s ease;
       font-weight: 500;
       letter-spacing: 0.5px;
+      text-align: center;
     }
 
     .audience-item.active {
@@ -449,6 +450,7 @@
       /* Keep as a single horizontal row, aligned right */
       .nav-strip {
         justify-content: flex-end;
+        padding-right: 1rem;
         gap: 0.75rem;
         padding: 0.25rem 0;
       }
@@ -490,7 +492,25 @@
     @media (max-width: 575.98px) {
       body { padding-top: 112px; }
 
-      .hero-dove { width: 44px; }
+      /* HERO TITLE HIERARCHY */
+      svg text {
+        font-size: 62px; /* JOHN MICHAEL'S SHOW larger */
+      }
+
+      .prepare-font {
+        font-size: 1.6rem !important; /* Prepare to Be Amazed smaller */
+        letter-spacing: 1.5px;
+      }
+
+      /* Doves match desktop positioning */
+      .hero-dove {
+        width: 44px;
+        top: 50%;
+      }
+
+      .hero-dove.left { left: 4%; }
+      .hero-dove.right { right: 4%; }
+
       .flying-dove { width: 18px; }
 
       .contact-link { font-size: 1.05rem; }
@@ -610,40 +630,35 @@
     <div class="container text-center section-panel">
       <h2 class="section-heading animated mb-5">Audience Reviews</h2>
 
-      <div class="review-rotator">
-        <div class="review active">
-          <div class="stars">★★★★★</div>
+      <div class="reviews-scroller" aria-label="Audience reviews">
+        <article class="review-card">
           <p class="review-text">“Simply Amazing!”</p>
-          <span class="review-author">— Gloria Estefan, Recording Artist</span>
-        </div>
+          <p class="review-author mb-0">— Gloria Estefan, Recording Artist</p>
+        </article>
 
-        <div class="review">
-          <div class="stars">★★★★★</div>
+        <article class="review-card">
           <p class="review-text">“He's a showman, very professional.”</p>
-          <span class="review-author">— Brenda Riley, Principal</span>
-        </div>
+          <p class="review-author mb-0">— Brenda Riley, Principal</p>
+        </article>
 
-        <div class="review">
-          <div class="stars">★★★★★</div>
+        <article class="review-card">
           <p class="review-text">“You had every child in the palm of your hand from beginning to end.”</p>
-          <span class="review-author">— Barbara Bothom, Oak Park Library</span>
-        </div>
+          <p class="review-author mb-0">— Barbara Bothom, Oak Park Library</p>
+        </article>
 
-        <div class="review">
-          <div class="stars">★★★★★</div>
+        <article class="review-card">
           <p class="review-text">“What a show!”</p>
-          <span class="review-author">— Andy Lasko, E.D.S.</span>
-        </div>
+          <p class="review-author mb-0">— Andy Lasko, E.D.S.</p>
+        </article>
 
-        <div class="review">
-          <div class="stars">★★★★★</div>
+        <article class="review-card">
           <p class="review-text">“Nice, very nice.”</p>
-          <span class="review-author">— John Morton, QSS / NASA</span>
-        </div>
+          <p class="review-author mb-0">— John Morton, QSS / NASA</p>
+        </article>
       </div>
 
       <div class="mt-5 text-center mx-auto" style="max-width: 720px;">
-        <p class="mb-3"><strong>Some of John Michaels’ Audience Members Include:</strong></p>
+        <p class="mb-3 text-center"><strong>Some of John Michaels’ Audience Members Include:</strong></p>
         <div class="audience-rotator">
           <div class="audience-item active">OSS Graup, Inc.</div>
           <div class="audience-item">EDS</div>
@@ -653,7 +668,7 @@
           <div class="audience-item">Six Flags Over Georgia</div>
           <div class="audience-item">Stone Mountain Park (Stone Mountain, GA)</div>
           <div class="audience-item">Busch Gardens (Tampa, Florida)</div>
-          <div class="audience-item">National Child Safety Council & National Fire Safety Council</div>
+          <div class="audience-item">National Child Safety Council &amp; National Fire Safety Council</div>
         </div>
       </div>
     </div>
@@ -670,7 +685,7 @@
             <div class="card-body">
               <h5 class="card-title">★★★★★ — School Show Assemblies</h5>
               <p class="card-text">
-                From 1999 to 2008, John Michaels worked with the <strong>National Child Safety Council</strong> and the <strong>National Fire Safety Council</strong>, performing over <strong>2,000 school show assemblies</strong> nationwide.
+                From 1999 to 2008, John Michaels worked with the <strong>National Child Safety Council</strong> and the <strong>National Fire Safety Council</strong>, performing over <strong>2,500 school show assemblies</strong> nationwide.
               </p>
               <p class="card-text mb-0">
                 Prior to that, John Michaels performed his own school assembly programs. Below are just a few letters that have been written by schools reflecting on his performances.
@@ -743,19 +758,6 @@
         star.style.animationDuration = 3 + Math.random() * 4 + 's';
         container.appendChild(star);
       }
-    })();
-
-    // Review rotation (defensive: only runs if reviews exist)
-    (function rotateReviews() {
-      const reviews = document.querySelectorAll('.review-rotator .review');
-      if (!reviews || reviews.length <= 1) return;
-
-      let i = 0;
-      setInterval(() => {
-        reviews[i].classList.remove('active');
-        i = (i + 1) % reviews.length;
-        reviews[i].classList.add('active');
-      }, 5000);
     })();
 
     // Audience member fade rotator
