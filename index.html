@@ -183,6 +183,19 @@
         0 0 12px rgba(255,255,255,0.35);
     }
 
+    /* Hero icon under subtitle */
+    .hero-icon {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 120px;
+      max-width: 55vw;
+      opacity: 0.95;
+      position: relative;
+      z-index: 3;
+      filter: drop-shadow(0 0 14px rgba(255,255,255,0.7));
+    }
+
     /* ===============
        SECTION GLASS PANEL
        =============== */
@@ -326,6 +339,12 @@
       inset: 0;
       pointer-events: none;
       z-index: 1;
+      opacity: 1;
+      transition: opacity 0.7s ease;
+    }
+
+    .hero-doves.is-hidden {
+      opacity: 0;
     }
 
     .hero-dove {
@@ -354,6 +373,12 @@
       inset: 0;
       pointer-events: none;
       z-index: 1;
+      opacity: 1;
+      transition: opacity 0.7s ease;
+    }
+
+    .flying-doves.is-hidden {
+      opacity: 0;
     }
 
     .flying-dove {
@@ -505,31 +530,6 @@
         font-size: 1.35rem !important; /* Prepare to Be Amazed smaller */
         letter-spacing: 1.2px;
       }
-
-      /* Doves match desktop positioning */
-      .hero-dove {
-        width: 44px;
-        top: 50%;
-      }
-
-      .hero-dove.left { left: 4%; }
-      .hero-dove.right { right: 4%; }
-
-      .flying-dove { width: 18px; }
-
-      .contact-link { font-size: 1.05rem; }
-
-      /* Doves match desktop positioning */
-      .hero-dove {
-        width: 44px;
-        top: 50%;
-      }
-
-      .hero-dove.left { left: 4%; }
-      .hero-dove.right { right: 4%; }
-
-      .flying-dove { width: 18px; }
-
       .contact-link { font-size: 1.05rem; }
 
 
@@ -612,6 +612,8 @@
       </svg>
 
       <h1 class="display-1 text-center hero-subtext prepare-font" style="font-size: clamp(1.2rem, 3.2vw, 1.8rem); margin-top: 0.4rem;">Prepare to Be Amazed...</h1>
+
+      <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/Magician%20Hat%20and%20Wand.png" alt="Magician hat and wand" class="mt-3 hero-icon" />
     </div>
   </section>
 
@@ -700,7 +702,7 @@
         <div class="col-lg-10">
           <div class="card bg-transparent text-white border-info mb-2">
             <div class="card-body">
-              <h5 class="card-title">★★★★★ — School Show Assemblies</h5>
+              <h5 class="card-title">School Show Assemblies</h5>
               <p class="card-text">
                 From 1999 to 2008, John Michaels worked with the <strong>National Child Safety Council</strong> and the <strong>National Fire Safety Council</strong>, performing over <strong>2,500 school show assemblies</strong> nationwide.
               </p>
@@ -793,11 +795,13 @@
     // Flying doves (right → left)
     (function createFlyingDoves() {
       const container = document.querySelector('.flying-doves');
-      const hero = document.getElementById('home');
-      if (!container || !hero) return;
+      if (!container) return;
 
       const COUNT = 5;
       const imgSrc = 'https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/Dove.png';
+
+      // Prevent duplicates if script runs twice
+      if (container.querySelectorAll('img.flying-dove').length) return;
 
       for (let i = 0; i < COUNT; i++) {
         const dove = document.createElement('img');
@@ -815,39 +819,25 @@
 
         container.appendChild(dove);
       }
+    })();
+
+    // Show doves ONLY on the main hero section
+    (function heroOnlyDoves() {
+      const hero = document.getElementById('home');
+      const staticDoves = document.querySelector('.hero-doves');
+      const flyingDoves = document.querySelector('.flying-doves');
+      if (!hero || !staticDoves || !flyingDoves) return;
 
       const observer = new IntersectionObserver(
         ([entry]) => {
-          container.style.display = entry.isIntersecting ? 'block' : 'none';
+          const hide = !entry.isIntersecting;
+          staticDoves.classList.toggle('is-hidden', hide);
+          flyingDoves.classList.toggle('is-hidden', hide);
         },
-        { threshold: 0.25 }
+        { threshold: 0.35 }
       );
 
       observer.observe(hero);
-    })();
-
-    // Align the left/right hero doves to the curved title (mobile + desktop)
-    (function alignHeroDoves() {
-      const heroDoves = document.querySelector('.hero-doves');
-      const left = document.querySelector('.hero-dove.left');
-      const right = document.querySelector('.hero-dove.right');
-      const svg = document.querySelector('#home svg');
-      if (!heroDoves || !left || !right || !svg) return;
-
-      const update = () => {
-        const r = svg.getBoundingClientRect();
-        const centerY = r.top + r.height / 2 + 18;
-        left.style.top = centerY + 'px';
-        right.style.top = centerY + 'px';
-      };
-
-      // Run now and after layout settles
-      update();
-      requestAnimationFrame(update);
-      setTimeout(update, 200);
-
-      window.addEventListener('resize', update, { passive: true });
-      window.addEventListener('orientationchange', () => setTimeout(update, 150), { passive: true });
     })();
 
     // Smooth scrolling for navbar anchor links (defensive) for navbar anchor links (defensive)
