@@ -656,10 +656,10 @@
           <p>
             So if you are in the need of entertainment for a large venue or just a small audience, <strong>The John Michaels Show</strong> can custom tailor a show for your next event.
           </p>
-        </div>
-      </div>
-    </div>
-  </section>
+                      
+            </div>
+          </div>
+        </section>
 
   <!-- REVIEWS -->
   <section id="gallery-reviews" class="py-5">
@@ -776,23 +776,29 @@
       </div>
     </div>
           <!-- LETTERS -->
-        <section id="letters" class="py-5">
-          <div class="container text-center section-panel">
-            <h2 class="section-heading animated mb-5">Letters</h2>
-            
-            <div class="row justify-content-center g-4" id="letters-gallery">
-              <div class="col-12 col-sm-6 col-md-4">
-                <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/letters/Letter1.png" alt="Letter of Recommendation 1" class="img-fluid rounded shadow letter-click" data-letter="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/letters/Letter1.png" style="cursor:pointer;" />
-              </div>
-              <div class="col-12 col-sm-6 col-md-4">
-                <img src="images/letter2.png" alt="Letter of Recommendation 2" class="img-fluid rounded shadow" />
-              </div>
-              <div class="col-12 col-sm-6 col-md-4">
-                <img src="images/letter3.png" alt="Letter of Recommendation 3" class="img-fluid rounded shadow" />
-              </div>
-            </div>
-          </div>
-        </section>
+        <section id="letters" class="py-5 letters-reset">
+  <div class="container">
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/letters/Letter1.png" alt="Letter of Recommendation 1" class="img-fluid rounded shadow letter-click" data-letter="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/letters/Letter1.png" style="cursor:pointer; transform: scale(1.08);" />
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/letters/Letter3.png" alt="Letter of Recommendation 3" class="img-fluid rounded shadow letter-click" data-letter="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/letters/Letter3.png" style="cursor:pointer; transform: scale(1.08);" />
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/letters/Letter2.png" alt="Letter of Recommendation 2" class="img-fluid rounded shadow letter-click" data-letter="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/letters/Letter2.png" style="cursor:pointer; transform: scale(1.08);" />
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/letters/Letter4.png" alt="Letter of Recommendation 4" class="img-fluid rounded shadow letter-click" data-letter="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/letters/Letter4.png" style="cursor:pointer; transform: scale(1.08);" />
+      </div>
+
+    </div>
+  </div>
+</section>
       </div>
     </div>
   </section>
@@ -846,9 +852,9 @@
 <!-- LETTER MODAL -->
 <div class="modal fade" id="letterModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content bg-dark border-0">
+    <div class="modal-content bg-dark border-0 position-relative">
       <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
-      <img id="letterModalImg" src="" alt="Letter enlarged" class="img-fluid rounded" />
+      <img id="letterModalImg" src="" alt="Letter enlarged" class="img-fluid rounded" style="max-height:85vh; margin:auto; display:block;" />
     </div>
   </div>
 </div>
