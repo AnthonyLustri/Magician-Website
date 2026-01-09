@@ -535,6 +535,31 @@
     
 
     @media (max-width: 575.98px) {
+      /* tighten spacing for section decorative images on mobile */
+      #gallery-reviews img,
+      #contact img {
+        max-width: 180px;
+        margin-top: -14px;
+        margin-bottom: 0.75rem;
+      }
+
+      /* tighten spacing between logo and image-3 on mobile */
+      .hero-under-logo {
+        max-width: 180px;
+        margin-top: -32px;
+        margin-bottom: 0.25rem;
+      }
+
+      /* MOBILE HERO POSITIONING FIX */
+      #home .container {
+        position: relative;
+        top: -60px; /* move title block higher on mobile */
+      }
+
+      .hero-dove {
+        top: 62%; /* push doves lower so title sits above */
+      }
+
       body { padding-top: 112px; }
 
       /* HERO TITLE HIERARCHY — FIXED */
@@ -620,7 +645,7 @@
   <section id="home" class="hero">
     
     <div class="container text-center" style="position: relative; z-index: 2;">
-      <svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid meet" style="max-width: 100%; height: auto; overflow: visible;" class="mb-2" aria-hidden="true">
+      <svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid meet" style="max-width: 100%; height: auto; overflow: visible; margin-bottom:-22px;" class="mb-2" aria-hidden="true">
         <path id="curve" d="M 60 190 Q 600 20 1140 190" fill="transparent" />
         <text text-anchor="middle" fill="#ffffff" font-size="62" font-family="'Yusei Magic', sans-serif" letter-spacing="3" class="sparkle-text">
           <animate attributeName="opacity" from="0" to="1" dur="1.6s" fill="freeze" />
@@ -628,9 +653,10 @@
         </text>
       </svg>
 
-      <h1 class="display-1 text-center hero-subtext prepare-font" style="font-size: clamp(1.2rem, 3.2vw, 1.8rem); margin-top: 0.4rem;">Prepare to Be Amazed...</h1>
+      <!-- Hero image under title -->
+      <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/image-3.png" alt="John Michaels Show graphic" class="img-fluid mx-auto d-block mb-1 hero-under-logo" style="max-width:220px; margin-top:-28px;" />
 
-      <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/Magician%20Hat%20and%20Wand.png" alt="Magician hat and wand" class="mt-3 hero-icon" />
+      <h1 class="display-1 text-center hero-subtext prepare-font" style="font-size: clamp(1.2rem, 3.2vw, 1.8rem); margin-top: 0.4rem;">Prepare to Be Amazed...</h1>
     </div>
   </section>
 
@@ -691,6 +717,8 @@
   <!-- REVIEWS -->
   <section id="gallery-reviews" class="py-5">
     <div class="container text-center section-panel">
+      <!-- Decorative image above Audience Reviews -->
+      <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/image-2.png" alt="Audience reviews decorative graphic" class="img-fluid mx-auto d-block mb-3" style="max-width:220px; margin-top:-10px;" />
       <h2 class="section-heading animated mb-5">Audience Reviews</h2>
 
       <div class="reviews-scroller" aria-label="Audience reviews">
@@ -790,6 +818,8 @@
   <!-- CONTACT -->
   <section id="contact" class="py-5">
     <div class="container text-center section-panel">
+      <!-- Decorative image above Book a Show -->
+      <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/image-1.png" alt="Book a show decorative graphic" class="img-fluid mx-auto d-block mb-3" style="max-width:220px; margin-top:-10px;" />
       <h2 class="section-heading animated mb-3 animate__animated animate__jackInTheBox magictime bombLeftOut">Book a Show</h2>
       <div class="contact-info mb-4 mx-auto" style="max-width: 720px;">
         <p class="mb-3"><strong>Email Today for Availability</strong></p>
