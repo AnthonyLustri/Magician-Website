@@ -198,9 +198,10 @@
     /* All-in-one hero image sizing */
     /* All-in-one hero image sizing */
     /* All-in-one hero image sizing */
+    /* All-in-one hero image sizing (DESKTOP DEFAULT) */
     .hero-allinone {
-      max-width: 680px; /* larger on desktop */
-      width: 100%;
+      max-width: 460px; /* smaller desktop logo */
+      width: auto;       /* prevent full-width stretching */
       height: auto;
     }
 
@@ -544,81 +545,109 @@
     
 
     @media (max-width: 575.98px) {
-      /* tighten spacing for section decorative images on mobile */
-      #gallery-reviews img,
-      #contact img {
-        max-width: 200px;
-        margin-top: -14px;
-        margin-bottom: 0.75rem;
+      html, body { overflow-x: hidden; }
+
+      .container { padding-left: 1rem; padding-right: 1rem; }
+
+      .hero {
+        min-height: 88vh;
+        height: auto;
+        padding-top: 0.5rem;
+        padding-bottom: 1.25rem;
       }
 
-      /* tighten spacing between logo and image-3 on mobile */
-      .hero-under-logo {
-        max-width: 180px;
-        margin-top: -32px;
-        margin-bottom: 0.25rem;
-      }
-
-      /* All-in-one hero image sizing on mobile */
-      .hero-allinone {
-        max-width: 420px !important; /* larger on mobile */
-        margin-top: -18px;
-        margin-bottom: 0.25rem;
-      }
-        margin-top: -18px;
-        margin-bottom: 0.25rem;
-      }
-        margin-top: -18px;
-        margin-bottom: 0.25rem;
-      }
-
-      /* MOBILE HERO POSITIONING FIX */
       #home .container {
         position: relative;
-        top: -60px; /* move title block higher on mobile */
+        top: -12px; /* much safer lift */
       }
 
-      .hero-dove {
-        top: 62%; /* push doves lower so title sits above */
-      }
-
-      body { padding-top: 112px; }
-
-      /* HERO TITLE HIERARCHY — FIXED */
-      #home svg { overflow: visible; }
       svg text {
-        font-size: 68px; /* THE JOHN MICHAELS SHOW clearly dominant */
+        font-size: 48px !important;
+        letter-spacing: 2px;
+      }
+
+      /* MOBILE LOGO — FIXED SIZE */
+      .hero-allinone {
+        width: auto !important;
+        max-width: 240px !important; /* smaller on phones */
+        height: auto !important;
+        margin-top: -14px !important;
       }
 
       h1.display-1.prepare-font {
-        font-size: 1.1rem !important; /* much smaller on mobile */
-        letter-spacing: 1px;
-      }
-      .contact-link { font-size: 1.05rem; }
-
-
-      .hero { height: 92vh; }
-
-      h1.display-1 {
-        font-size: clamp(2.2rem, 8vw, 3.4rem);
-        line-height: 1.05;
+        font-size: 1.05rem !important;
+        margin-top: 0.35rem !important;
       }
 
-      .lead { font-size: 1.05rem; }
+      .hero-dove {
+        width: 40px;
+        top: 72%;
+        opacity: 0.75;
+      }
 
+      .review-card { max-width: 100%; }
+    }
+
+      /* DOVES: move them down so they never overlap the hero title/logo */
+      .hero-dove {
+        width: 44px;
+        top: 70%;
+        opacity: 0.8;
+      }
+      .hero-dove.left { left: 1.75%; }
+      .hero-dove.right { right: 1.75%; }
+
+      .flying-dove { width: 18px; }
+
+      /* Sections: tighten padding and improve readability */
       .section-panel {
-        padding: 1.5rem 1rem;
+        padding: 1.35rem 0.95rem;
         border-radius: 16px;
       }
 
-      .section-heading {
-        font-size: 1.7rem;
+      .section-heading { font-size: 1.55rem; }
+      .lead { font-size: 1.02rem; }
+
+      /* Reviews cards should stack nicely */
+      .reviews-scroller { gap: 0.9rem; }
+      .review-card { flex: 1 1 100%; max-width: 100%; }
+      .review-text { font-size: 1.05rem; }
+
+      /* Letters: a bit more width on tiny screens */
+      #letters img.letter-click { max-width: 95% !important; }
+
+      /* Decorative section images on mobile */
+      #gallery-reviews img,
+      #contact img {
+        max-width: 180px;
+        margin-top: -10px;
+        margin-bottom: 0.65rem;
       }
 
       /* reduce hover jump on touch devices */
       .card:hover {
         transform: none;
         box-shadow: 0 16px 32px rgba(100, 200, 255, 0.35);
+      }
+    }
+
+    /* Small tablets / large phones (Bootstrap md-ish) */
+    @media (min-width: 576px) and (max-width: 767.98px) {
+      #home .container { top: -18px; }
+      svg text { font-size: 56px; }
+      .hero-allinone {
+        width: min(460px, 86vw);
+        height: auto;
+        margin-top: -72px;
+      }
+      .hero-dove { top: 66%; width: 50px; }
+    }
+
+    /* iOS safe-area support (notch) */
+    @supports (padding: max(0px)) {
+      body { padding-top: calc(72px + env(safe-area-inset-top)); }
+      @media (max-width: 991.98px) {
+        body { padding-top: calc(104px + env(safe-area-inset-top)); }
       }
     }
 
@@ -636,7 +665,7 @@
 <body>
   <!-- Looping Video Background -->
   <video id="video-bg" autoplay muted loop playsinline preload="auto">
-    <source src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/videos/VideoBackground.webm" type="video/mp4" />
+    <source src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/videos/VideoBackground.webm" type="video/webm" />
     Your browser does not support the video tag.
   </video>
   <div class="overlay"></div><!-- Subtle stars layer -->
@@ -676,7 +705,7 @@
       </svg>
 
       <!-- Hero image under title -->
-<img decoding="async" fetchpriority="high" src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/Untitled-3%20copy.png" alt="John Michaels Show graphic" class="img-fluid mx-auto d-block mb-1 hero-allinone" style="margin-top:-128px; width: 450px; height: 400px;" />
+<img decoding="async" fetchpriority="high" src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/Untitled-3%20copy.png" alt="John Michaels Show graphic" class="img-fluid mx-auto d-block mb-1 hero-allinone" />
 
 
       <h1 class="display-1 text-center hero-subtext prepare-font" style="font-size: clamp(1.2rem, 3.2vw, 1.8rem); margin-top: 0.4rem;">Prepare to Be Amazed...</h1>
