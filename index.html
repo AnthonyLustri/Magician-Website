@@ -199,9 +199,10 @@
     /* All-in-one hero image sizing */
     /* All-in-one hero image sizing */
     /* All-in-one hero image sizing (DESKTOP DEFAULT) */
+    /* All-in-one hero image sizing (DESKTOP DEFAULT) */
     .hero-allinone {
-      max-width: 460px; /* smaller desktop logo */
-      width: auto;       /* prevent full-width stretching */
+      max-width: 640px; /* larger desktop logo */
+      width: auto;
       height: auto;
     }
 
@@ -558,7 +559,7 @@
 
       #home .container {
         position: relative;
-        top: -12px; /* much safer lift */
+        top: -12px;
       }
 
       svg text {
@@ -566,13 +567,41 @@
         letter-spacing: 2px;
       }
 
-      /* MOBILE LOGO — FIXED SIZE */
+      /* MOBILE LOGO — LARGER & INTENTIONAL */
       .hero-allinone {
         width: auto !important;
-        max-width: 240px !important; /* smaller on phones */
+        max-width: 380px !important; /* increased mobile size */
         height: auto !important;
-        margin-top: -14px !important;
+        margin-top: -38px !important; /* intentional overlap */
       }
+
+      h1.display-1.prepare-font {
+        font-size: 1.05rem !important;
+        margin-top: 0.35rem !important;
+      }
+
+      .hero-dove {
+        width: 40px;
+        top: 72%;
+        opacity: 0.75;
+      }
+
+      .review-card { max-width: 100%; }
+    }
+
+      h1.display-1.prepare-font {
+        font-size: 1.05rem !important;
+        margin-top: 0.35rem !important;
+      }
+
+      .hero-dove {
+        width: 40px;
+        top: 72%;
+        opacity: 0.75;
+      }
+
+      .review-card { max-width: 100%; }
+    }
 
       h1.display-1.prepare-font {
         font-size: 1.05rem !important;
