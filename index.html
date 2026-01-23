@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -359,7 +360,7 @@
 
     .hero-dove {
       position: absolute;
-      top: 42%;
+      top: 40%;
       transform: translateY(-50%);
       width: 80px;
       opacity: 0.9;
@@ -563,10 +564,44 @@
         top: -12px;
       }
 
-      /* MOBILE: main SHOW logo smaller */
+      /* MOBILE: main SHOW logo — centered & never cut off */
       .hero-title-logo {
-        max-width: 300px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: calc(100vw - 4rem); /* slightly smaller to avoid edge clipping */
+        height: auto;
+        object-fit: contain;
+        object-position: center;
       }
+      }
+
+      /* MOBILE LOGO */
+      .hero-allinone {
+        width: auto !important;
+        max-width: 360px !important;
+        height: auto !important;
+        margin-top: -34px !important;
+      }
+
+      h1.display-1.prepare-font {
+        font-size: 1.05rem !important;
+        margin-top: 0.35rem !important;
+      }
+
+      /* MOBILE DOVES — FLANK TITLE */
+      .hero-dove {
+        width: 44px;
+        top: 40%;
+        opacity: 0.85;
+      }
+
+      .hero-dove.left { left: 6%; }
+      .hero-dove.right { right: 6%; }
+
+      .review-card { max-width: 100%; }
+    }
 
       /* MOBILE LOGO */
       .hero-allinone {
@@ -757,7 +792,7 @@
         fetchpriority="high"
         src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/JohnMichaelsShowLogo.png"
         alt="The John Michaels Show"
-        class="img-fluid mx-auto d-block hero-title-logo" style="max-width: 420px;"
+        class="img-fluid mx-auto d-block hero-title-logo"
       />
 
       <!-- Hero image under title -->
