@@ -564,20 +564,22 @@
         top: -12px;
       }
 
-      /* MOBILE: main SHOW logo — centered & never cut off */
+      /* MOBILE: main SHOW logo — perfect size */
       .hero-title-logo {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
         width: 100%;
-        max-width: calc(100vw - 4rem); /* slightly smaller to avoid edge clipping */
+        max-width: calc(100vw - 4rem);
         height: auto;
         object-fit: contain;
         object-position: center;
       }
-      }
 
-      /* MOBILE LOGO */
+      .hero-allinone {
+        width: auto !important;
+        max-width: 360px !important;
+        height: auto !important;
+        margin-top: -34px !important;
+      }
+    }  /* MOBILE LOGO */
       .hero-allinone {
         width: auto !important;
         max-width: 360px !important;
@@ -787,13 +789,16 @@
   <section id="home" class="hero">
     
     <div class="container text-center" style="position: relative; z-index: 2;">
+      
       <img
-        decoding="async"
-        fetchpriority="high"
-        src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/JohnMichaelsShowLogo.png"
-        alt="The John Michaels Show"
-        class="img-fluid mx-auto d-block hero-title-logo"
-      />
+  decoding="async"
+  fetchpriority="high"
+  src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/JohnMichaelsShowLogo.png"
+  alt="John Michaels Show graphic"
+  class="img-fluid mx-auto d-block mb-1 hero-allinone"
+  width="1200"
+  height="700"
+/>
 
       <!-- Hero image under title -->
 <img
