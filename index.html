@@ -816,6 +816,80 @@
         scroll-behavior: auto !important;
       }
     }
+
+    /* =========================================
+       CONSISTENT RESPONSIVE OVERRIDES (FINAL)
+       Purpose: make the site look the same across
+       different phones, tablets, laptops, and desktops.
+       We place this at the END so it wins against earlier
+       duplicated rules.
+       ========================================= */
+
+    /* Prevent mobile browsers from "helpfully" resizing text */
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+    /* Keep hero content consistently centered and constrained */
+    #home .container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Make logo sizing consistent across all desktop/laptop widths */
+    @media (min-width: 576px) {
+      .hero-allinone.hero-logo-primary {
+        width: min(92vw, var(--show-logo-max)) !important;
+        max-width: var(--show-logo-max) !important;
+        height: auto !important;
+        margin-top: 0 !important;
+      }
+
+      .hero-allinone.hero-logo-secondary {
+        width: min(84vw, var(--jm-logo-max)) !important;
+        max-width: var(--jm-logo-max) !important;
+        height: auto !important;
+        margin-top: var(--jm-logo-overlap) !important;
+      }
+
+      /* Keep the subtitle position stable across laptop sizes */
+      h1.display-1.hero-subtext.prepare-font {
+        margin-top: -0.6rem !important;
+      }
+    }
+
+    /* Make logo sizing consistent across ALL phones (wins over the duplicated 360/380px rules) */
+    @media (max-width: 575.98px) {
+      :root {
+        /* cap huge phones a bit so it looks the same across devices */
+        --show-logo-max: min(420px, calc(100vw - 3rem));
+        --jm-logo-max: min(420px, calc(100vw - 3rem));
+        --jm-logo-overlap: -125px;
+      }
+
+      #home .container { top: -12px !important; }
+
+      .hero-allinone.hero-logo-primary {
+        width: min(92vw, var(--show-logo-max)) !important;
+        max-width: var(--show-logo-max) !important;
+        height: auto !important;
+        margin-top: -18px !important; /* mobile nudge */
+      }
+
+      .hero-allinone.hero-logo-secondary {
+        width: min(92vw, var(--jm-logo-max)) !important;
+        max-width: var(--jm-logo-max) !important;
+        height: auto !important;
+        margin-top: var(--jm-logo-overlap) !important;
+      }
+
+      /* Stable subtitle sizing/spacing across iOS/Android */
+      h1.display-1.hero-subtext.prepare-font {
+        font-size: clamp(1.05rem, 3.6vw, 1.35rem) !important;
+        margin-top: -0.45rem !important;
+        letter-spacing: 1.5px;
+      }
+    }
+
   </style>
 </head>
 <body>
