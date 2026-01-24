@@ -218,7 +218,7 @@
     /* Individual logo sizing (uses CSS variables above) */
     .hero-logo-primary {
       width: 100%;
-      max-width: calc(var(--show-logo-max) * 1.25); /* larger overall */
+      max-width: calc(var(--show-logo-max) * 1.35); /* larger overall */
       height: auto;
       transform: translateX(-28px);
     }
@@ -249,7 +249,7 @@
        This block ensures BOTH logos follow the variables on ALL phones. */
     @media (max-width: 575.98px) {
       :root {
-        --show-logo-max: min(520px, 94vw); /* larger on mobile */
+        --show-logo-max: min(620px, 96vw); /* larger on mobile */
         --jm-logo-max: min(420px, calc(100vw - 3rem));
         --jm-logo-overlap: -125px;
       }
