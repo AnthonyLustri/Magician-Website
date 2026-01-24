@@ -31,7 +31,7 @@
       /* ===== HERO LOGO CONTROLS (DESKTOP DEFAULTS) =====
          Adjust these numbers any time to resize your two hero logos.
       */
-      --show-logo-max: 900px;        /* JohnMichaelsShowLogo.png */
+      --show-logo-max: 1050px;        /* JohnMichaelsShowLogo.png */
       --jm-logo-max: 640px;          /* JohnMichaelsLogo.png */
       --jm-logo-overlap: -245px;     /* negative pulls JohnMichaelsLogo UP */
     }
@@ -218,7 +218,9 @@
     /* Individual logo sizing (uses CSS variables above) */
     .hero-logo-primary {
       width: 100%;
-      max-width: var(--show-logo-max);
+      max-width: calc(var(--show-logo-max) * 1.15); /* slightly larger */
+      height: auto;
+      transform: translateX(-28px); /* subtle shift left */
     }
 
     .hero-logo-secondary {
@@ -922,9 +924,7 @@
   <!-- HERO -->
     <section id="home" class="hero">
     <div class="container text-center" style="position: relative; z-index: 2;">
-      <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/JohnMichaelsShowLogo.png" class="img-fluid mx-auto d-block mb-1 hero-allinone hero-logo-primary" alt="John Michaels Show" />
-      <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/JohnMichaelsLogo.png" class="img-fluid mx-auto d-block mb-1 hero-allinone hero-logo-secondary" alt="John Michaels" />
-      <h1 class="display-1 hero-subtext prepare-font" style="font-size: clamp(1.2rem, 3.2vw, 1.8rem); margin-top: -0.6rem;">Prepare to Be Amazed...</h1>
+      <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/NewLogo.png" class="img-fluid mx-auto d-block mb-1 hero-allinone hero-logo-primary" alt="John Michaels Show" />
     </div>
   </section>
 
