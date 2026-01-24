@@ -31,7 +31,7 @@
       /* ===== HERO LOGO CONTROLS (DESKTOP DEFAULTS) =====
          Adjust these numbers any time to resize your two hero logos.
       */
-      --show-logo-max: 1200px;        /* JohnMichaelsShowLogo.png */
+      --show-logo-max: 1000px;        /* JohnMichaelsShowLogo.png */
       --jm-logo-max: 640px;          /* JohnMichaelsLogo.png */
       --jm-logo-overlap: -245px;     /* negative pulls JohnMichaelsLogo UP */
     }
@@ -218,9 +218,9 @@
     /* Individual logo sizing (uses CSS variables above) */
     .hero-logo-primary {
       width: 100%;
-      max-width: calc(var(--show-logo-max) * 1.35); /* larger overall */
+      max-width: calc(var(--show-logo-max) * 1.1); /* larger overall */
       height: auto;
-      transform: translateX(-28px);
+      transform: none;
     }
 
     .hero-logo-secondary {
@@ -250,7 +250,7 @@
     @media (max-width: 575.98px) {
       :root {
         /* Make the logo BIG on all phones */
-        --show-logo-max: min(92vw, 720px);
+        --show-logo-max: min(86vw, 560px);
       }
 
       #home .container {
@@ -953,7 +953,7 @@
   <!-- HERO -->
     <section id="home" class="hero">
     <div class="container text-center" style="position: relative; z-index: 2;">
-      <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/NewLogo.png" class="img-fluid mx-auto d-block mb-1 hero-allinone hero-logo-primary" alt="John Michaels Show" />
+      <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/Logo.png" class="img-fluid mx-auto d-block mb-1 hero-allinone hero-logo-primary" alt="John Michaels Show" />
     </div>
   </section>
 
