@@ -249,7 +249,12 @@
       .hero-allinone.hero-logo-primary {
         width: 100% !important;
         max-width: var(--show-logo-max) !important;
-        margin-top: 0 !important;
+        margin-top: -18px !important; /* mobile: nudge SHOW logo up slightly */
+      }
+      .hero-allinone.hero-logo-secondary {
+        width: 100% !important;
+        max-width: var(--jm-logo-max) !important;
+        margin-top: var(--jm-logo-overlap) !important;
       }
       .hero-allinone.hero-logo-secondary {
         width: 100% !important;
@@ -1123,18 +1128,33 @@
       }
     })();
 
-    // Show doves ONLY on the main hero section
-    (function heroOnlyDoves() {
-      const hero = document.getElementById('home');
-      const staticDoves = document.querySelector('.hero-doves');
+    // Fade flying doves out when reaching the About section
+    (function dovesFadeOnAbout() {
+      const about = document.getElementById('about');
       const flyingDoves = document.querySelector('.flying-doves');
-      if (!hero || !staticDoves || !flyingDoves) return;
+      if (!about || !flyingDoves) return;
 
       const observer = new IntersectionObserver(
         ([entry]) => {
-          const hide = !entry.isIntersecting;
-          staticDoves.classList.toggle('is-hidden', hide);
-          flyingDoves.classList.toggle('is-hidden', hide);
+          // When About comes into view, fade doves out
+          flyingDoves.classList.toggle('is-hidden', entry.isIntersecting);
+        },
+        { threshold: 0.2 }
+      );
+
+      observer.observe(about);
+    })();
+
+    // Ensure flying doves only appear while the HERO is in view
+    // (Static left/right doves were removed, so we only manage .flying-doves here.)
+    (function heroOnlyFlyingDoves() {
+      const hero = document.getElementById('home');
+      const flyingDoves = document.querySelector('.flying-doves');
+      if (!hero || !flyingDoves) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          flyingDoves.classList.toggle('is-hidden', !entry.isIntersecting);
         },
         { threshold: 0.35 }
       );
