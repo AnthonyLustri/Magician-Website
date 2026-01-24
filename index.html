@@ -249,10 +249,23 @@
        This block ensures BOTH logos follow the variables on ALL phones. */
     @media (max-width: 575.98px) {
       :root {
-        --show-logo-max: min(620px, 96vw); /* larger on mobile */
-        --jm-logo-max: min(420px, calc(100vw - 3rem));
-        --jm-logo-overlap: -125px;
+        /* Make the logo BIG on all phones */
+        --show-logo-max: min(92vw, 720px);
       }
+
+      #home .container {
+        top: -16px !important;
+        text-align: center !important;
+      }
+
+      .hero-allinone.hero-logo-primary {
+        width: 92vw !important;
+        max-width: var(--show-logo-max) !important;
+        height: auto !important;
+        margin: 0 auto !important; /* hard center */
+        transform: none !important; /* remove left shift on mobile */
+      }
+    }
 
       #home .container { top: -12px !important; }
 
