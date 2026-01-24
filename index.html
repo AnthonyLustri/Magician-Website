@@ -32,8 +32,8 @@
          Adjust these numbers any time to resize your two hero logos.
       */
       --show-logo-max: 900px;        /* JohnMichaelsShowLogo.png */
-      --jm-logo-max: 500px;          /* JohnMichaelsLogo.png */
-      --jm-logo-overlap: -165px;     /* negative pulls JohnMichaelsLogo UP */
+      --jm-logo-max: 640px;          /* JohnMichaelsLogo.png */
+      --jm-logo-overlap: -245px;     /* negative pulls JohnMichaelsLogo UP */
     }
 
     body {
@@ -230,6 +230,22 @@
     /* DESKTOP OVERRIDE (fixes any stray mobile !important rules)
        Ensures the desktop logo sizing variables always win for the hero logos. */
     @media (min-width: 576px) {
+      .hero-allinone.hero-logo-primary {
+        width: 100% !important;
+        max-width: var(--show-logo-max) !important;
+        margin-top: 0 !important;
+      }
+      .hero-allinone.hero-logo-secondary {
+        width: 100% !important;
+        max-width: var(--jm-logo-max) !important;
+        margin-top: var(--jm-logo-overlap) !important;
+      }
+    }
+
+    /* MOBILE LOGO NORMALIZATION
+       Your CSS currently has multiple duplicated .hero-allinone rules on mobile.
+       This block ensures BOTH logos follow the variables on ALL phones. */
+    @media (max-width: 575.98px) {
       .hero-allinone.hero-logo-primary {
         width: 100% !important;
         max-width: var(--show-logo-max) !important;
@@ -799,17 +815,14 @@
 </head>
 <body>
   <!-- Looping Video Background -->
-  <video id="video-bg" autoplay muted loop playsinline preload="auto">
-    <source src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/videos/VideoBackground.mp4" type="video/webm" />
+  <video id="video-bg" autoplay muted loop playsinline preload="auto" poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==">
+    <source src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/videos/VideoBackground.webm" type="video/webm" />
+    <source src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/videos/VideoBackground.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
   <div class="overlay"></div><!-- Subtle stars layer -->
   <div class="particles-container" aria-hidden="true"></div>
-  <!-- Hero doves (static, left & right) -->
-  <div class="hero-doves" aria-hidden="true">
-    <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/Dove.png" class="hero-dove left" alt="" />
-    <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/Dove.png" class="hero-dove right" alt="" />
-  </div>
+  
 
   <!-- Flying doves -->
   <div class="flying-doves" aria-hidden="true"></div>
@@ -832,7 +845,7 @@
     <div class="container text-center" style="position: relative; z-index: 2;">
       <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/JohnMichaelsShowLogo.png" class="img-fluid mx-auto d-block mb-1 hero-allinone hero-logo-primary" alt="John Michaels Show" />
       <img src="https://raw.githubusercontent.com/AnthonyLustri/Magician-Website/refs/heads/main/images/JohnMichaelsLogo.png" class="img-fluid mx-auto d-block mb-1 hero-allinone hero-logo-secondary" alt="John Michaels" />
-      <h1 class="display-1 hero-subtext prepare-font" style="font-size: clamp(1.2rem, 3.2vw, 1.8rem); margin-top: 0.4rem;">Prepare to Be Amazed...</h1>
+      <h1 class="display-1 hero-subtext prepare-font" style="font-size: clamp(1.2rem, 3.2vw, 1.8rem); margin-top: -0.6rem;">Prepare to Be Amazed...</h1>
     </div>
   </section>
 
@@ -1173,10 +1186,15 @@
 
       const markNoVideo = () => document.body.classList.add('no-video');
 
-      // Try to play; if blocked, fall back.
+      // On many mobile browsers (especially iOS), autoplay may be blocked.
+      // If autoplay is blocked, we DO NOT hide the video element (it can still show a poster/first frame).
+      // We only fall back to the gradient if the video actually fails to load.
       const attempt = v.play();
       if (attempt && typeof attempt.then === 'function') {
-        attempt.catch(markNoVideo);
+        attempt.catch(() => {
+          // Autoplay blocked: keep the element, do not apply no-video.
+          // (User gesture would be required to start playback.)
+        });
       }
 
       // If the video errors out or can't load, fall back.
